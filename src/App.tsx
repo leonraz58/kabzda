@@ -11,8 +11,9 @@ function App() {
   return (
     <div>
       <Pagetitle title="This is an App component"/>
+      <Accordeon titleValue="Accordeon uncollapsed" collapsed={false}/>
+        <Accordeon titleValue="Accordeon collapsed" collapsed={true}/>
       <Rating value = {0}/>
-      <Accordeon titleValue="qqqqq"/>
       <Rating value = {1}/>
       <Rating value = {2}/>
       <Rating value = {3}/>

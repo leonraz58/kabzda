@@ -1,41 +1,42 @@
 import React from "react";
 
 type AccordeonPropTipe = {
-    titleValue: string;
+    titleValue: string
+    collapsed: boolean
 }
 
-export function Accordeon (props: AccordeonPropTipe){
-    console.log('Accordeon is rendering');
-    return (
-      <div>
-        <AccordeonTitle title={props.titleValue}/>
-        <AccordeonBody />
-      </div>
-    )
-  }
-
-type AccordeonTitlePropsType ={
+type AccordeonTitlePropsType = {
     title: string;
 }
 
-  function AccordeonTitle (props: AccordeonTitlePropsType){
+export function Accordeon(props: AccordeonPropTipe) {
+    console.log('Accordeon is rendering');
+    return (
+        <div>
+            <AccordeonTitle title={props.titleValue}/>
+            {!props.collapsed && <AccordeonBody/>}
+        </div>
+    )
+}
+
+function AccordeonTitle(props: AccordeonTitlePropsType) {
     console.log('AccordeonTitle rendering');
     return (
-      <div>
-        <h3>{props.title}</h3>
-      </div>
+        <div>
+            <h3>{props.title}</h3>
+        </div>
     )
-  }
-  
-  function AccordeonBody (){
+}
+
+function AccordeonBody() {
     console.log('AccordeonBody rendering');
     return (
-      <div>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
-      </div>
+        <div>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
     )
-    }
+}
