@@ -4,12 +4,14 @@ import './App.css';
 import { Accordeon } from './components/Accordeon/Accordeon';
 import { Rating } from './components/Rating/Rating';
 import OnOff from "./components/OnOff/OnOff";
+import {UncontrolledAccordeon} from "./components/UncontrolledAccordeon/Accordeon";
+import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 
 
 function App() {
   console.log('App is rendering');
   return (
-    <div>
+    <div className={"App"}>
       <Pagetitle title="This is an App component"/>
       <Accordeon titleValue="Accordeon uncollapsed" collapsed={false}/>
         <Accordeon titleValue="Accordeon collapsed" collapsed={true}/>
@@ -21,6 +23,8 @@ function App() {
       <Rating value = {5}/>
         <OnOff/>
         <OnOff/>
+        <UncontrolledAccordeon titleValue="Accordeon"/>
+        <UncontrolledRating/>
     </div>
   );
 }
