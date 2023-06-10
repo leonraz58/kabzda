@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Accordeon } from './components/Accordeon/Accordeon';
 import { Rating } from './components/Rating/Rating';
-
+import OnOff from "./components/OnOff/OnOff";
 
 
 function App() {
@@ -19,6 +19,8 @@ function App() {
       <Rating value = {3}/>
       <Rating value = {4}/>
       <Rating value = {5}/>
+        <OnOff/>
+        <OnOff/>
     </div>
   );
 }
