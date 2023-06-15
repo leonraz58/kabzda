@@ -1,21 +1,23 @@
 import React, {useState} from "react";
 
-type AccordeonPropTipe = {
+type AccordeonPropsType = {
     titleValue: string
+
     //collapsed: boolean
 }
 
 type AccordeonTitlePropsType = {
     title: string;
+    onClick:()=> void
 }
 
-export function UncontrolledAccordeon(props: AccordeonPropTipe) {
+export function UncontrolledAccordeon(props: AccordeonPropsType) {
     console.log('Accordeon is rendering');
     //const collapsed = true
     let [collapsed,setCollapsed]=useState(false)
     return (
         <div>
-            <AccordeonTitle title={props.titleValue}/>
+            <AccordeonTitle title={props.titleValue} onClick={()=>{setCollapsed(!collapsed)}}/>
             <button onClick={()=>{setCollapsed(!collapsed)}}>TOGGLE</button>
             {!collapsed && <AccordeonBody/>}
         </div>
@@ -26,7 +28,7 @@ function AccordeonTitle(props: AccordeonTitlePropsType) {
     console.log('AccordeonTitle rendering');
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h3 onClick={()=>{props.onClick()}}>{props.title}</h3>
         </div>
     )
 }
