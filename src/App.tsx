@@ -14,7 +14,12 @@ function App() {
     return (
         <div className={"App"}>
             <Pagetitle title="This is an App component"/>
-            <Accordeon titleValue="Accordeon" collapsed={accordeonCollapced}/>
+            <Accordeon titleValue="Accordeon"
+                       collapsed={accordeonCollapced}
+                       onChange={() => {
+                           setAccordeonCollapced(!accordeonCollapced)
+                       }}
+            />
 
             ---Rating---
             <Rating value={ratingValue} onClick={setRatingValue}/>
