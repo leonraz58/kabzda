@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Accordeon} from './components/Accordeon/Accordeon';
 import {Rating, RatingValueType} from './components/Rating/Rating';
-import OnOff from "./components/OnOff/OnOff";
+import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
 import {UncontrolledAccordeon} from "./components/UncontrolledAccordeon/UncontrolledAccordeon";
 import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
+import {OnOff} from "./components/OnOff/OnOff";
+
 
 function App() {
     console.log('App is rendering');
     let [ratingValue, setRatingValue] = useState<RatingValueType>(0)
     let [accordeonCollapced, setAccordeonCollapced] = useState<boolean>(false)
+    let [switchOn, setSwitchOn] = useState<boolean>(false)
     return (
         <div className={"App"}>
             <Pagetitle title="This is an App component"/>
@@ -29,8 +31,9 @@ function App() {
             {/*<Rating value={4}/>*/}
             {/*<Rating value={5}/>*/}
             ---OnOff---
-            <OnOff/>
-            <OnOff/>
+            <OnOff on={switchOn} onChange={(on:boolean)=>{setSwitchOn(on)}}/>
+            ---UncontrolledOnOff---
+            <UncontrolledOnOff onChange={setSwitchOn}/> <p>{switchOn.toString()}</p>
             ---UncontrolledAccordeon---
             <UncontrolledAccordeon titleValue="Accordeon"/>
             ---UncontrolledRating---
