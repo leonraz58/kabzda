@@ -6,6 +6,10 @@ export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
 
 type RatingPropsType = {
   value: RatingValueType
+    /**
+     * 123
+     * @param value 321
+     */
     onClick:(value:RatingValueType)=>void
 }
 

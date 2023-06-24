@@ -37,7 +37,7 @@ function App() {
             ---UncontrolledAccordeon---
             <UncontrolledAccordeon titleValue="Accordeon"/>
             ---UncontrolledRating---
-            <UncontrolledRating/>
+            {/*<UncontrolledRating/>*/}
         </div>
     );
 }
