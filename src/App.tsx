@@ -21,6 +21,11 @@ function App() {
                        onChange={() => {
                            setAccordeonCollapced(!accordeonCollapced)
                        }}
+                       items={[{title: 'Dimych', value: 1},
+                           {title: 'Valera', value: 2},
+                           {title: 'Vasya', value: 3}
+                       ]}
+                       onClick={()=>{}}
             />
 
             ---Rating---

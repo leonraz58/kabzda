@@ -1,5 +1,10 @@
 import React from "react";
 
+type ItemType = {
+    title: string
+    value: any
+}
+
 export type AccordeonPropsTipe = {
     titleValue: string
     collapsed: boolean
@@ -7,10 +12,9 @@ export type AccordeonPropsTipe = {
      * test
      */
     onChange:()=>void
-    /**
-     * color of header
-     */
     color?: string
+    items: ItemType[]
+    onClick: (onClickvalue:any)=>void
 }
 
 type AccordeonTitlePropsType = {
@@ -28,7 +32,7 @@ export function Accordeon(props: AccordeonPropsTipe) {
                 onChange={props.onChange}
                 color = {props.color}
             />
-            {!props.collapsed && <AccordeonBody/>}
+            {!props.collapsed && <AccordeonBody items={props.items} onClick={props.onClick}/>}
         </div>
     )
 }
@@ -43,14 +47,16 @@ function AccordeonTitle(props: AccordeonTitlePropsType) {
     )
 }
 
-function AccordeonBody() {
+type AccordeonBodyPropsType = {
+    items: ItemType[]
+    onClick: (value:any)=>void
+}
+function AccordeonBody(props: AccordeonBodyPropsType) {
     console.log('AccordeonBody rendering');
     return (
         <div>
             <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
+                {props.items.map((item, index)=><li onClick={()=>{props.onClick(item.value)}} key={index}>{item.title}</li>)}
             </ul>
         </div>
     )
