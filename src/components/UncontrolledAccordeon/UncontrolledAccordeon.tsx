@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, {useReducer} from "react";
+import {reducer, TOGGLE_CONSTANT} from "./reducer";
 
 type AccordeonPropsType = {
     titleValue: string
-
     //collapsed: boolean
 }
 
@@ -13,13 +13,15 @@ type AccordeonTitlePropsType = {
 
 export function UncontrolledAccordeon(props: AccordeonPropsType) {
     console.log('Accordeon is rendering');
-    //const collapsed = true
-    let [collapsed,setCollapsed]=useState(false)
+
+    //let [collapsed,setCollapsed]=useState(false)
+    let [state,dispatch]=useReducer(reducer, {collapsed: false})
     return (
         <div>
-            <AccordeonTitle title={props.titleValue} onClick={()=>{setCollapsed(!collapsed)}}/>
-            <button onClick={()=>{setCollapsed(!collapsed)}}>TOGGLE</button>
-            {!collapsed && <AccordeonBody/>}
+            {/*<AccordeonTitle title={props.titleValue} onClick={()=>{setCollapsed(!collapsed)}}/>*/}
+            <AccordeonTitle title={props.titleValue} onClick={()=>{dispatch({type: TOGGLE_CONSTANT})}}/>
+            <button onClick={()=>{dispatch({type: TOGGLE_CONSTANT})}}>TOGGLE</button>
+            {!state.collapsed && <AccordeonBody/>}
         </div>
     )
 }
