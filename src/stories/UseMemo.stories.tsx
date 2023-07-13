@@ -1,5 +1,5 @@
 import {useSourceProps} from "@storybook/blocks";
-import {useMemo, useState} from "react";
+import React, {useMemo, useState} from "react";
 
 export default {
     title: 'useMemo'
@@ -34,10 +34,44 @@ export const DifficultCountingExample = () => {
         <input value={b} onChange={(e)=>setB(Number(e.currentTarget.value))}/>
         <hr/>
         <div>
-            result fir a: {resultA}
+            result for a: {resultA}
         </div>
         <div>
-            result fir b: {resultB}
+            result for b: {resultB}
         </div>
+    </>
+}
+
+
+
+const UsersSecret = (props: {users: Array<string>}) => {
+    console.log('Users is rendering...')
+    return <div>
+        {props.users.map((u,i)=><div key={i}>{u}</div>)}
+    </div>
+}
+
+const Users = React.memo(UsersSecret)
+
+export const HelpsToReactMemo = () =>{
+    console.log('Example is rendering...')
+    const [counter, setCounter] = useState(0)
+    const [users, setUsers] = useState(['Dimych', 'Valera', 'Artem'])
+
+
+    const newArray = useMemo(()=>{
+        return users.filter(u => u.toLowerCase().indexOf('a') > -1)
+    },[users])
+
+    const addUser = () => {
+        const newUsers = [...users, 'Sveta']
+        setUsers(newUsers)
+    }
+
+    return <>
+        <button onClick={()=>{setCounter(counter+1)}}>+</button>
+        <button onClick={addUser}>add user</button>
+        {counter}
+        <Users users={newArray}/>
     </>
 }
