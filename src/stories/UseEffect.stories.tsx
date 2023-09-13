@@ -52,12 +52,29 @@ export const SetTimeOutExample = () => {
         },5000)
     },[])
 
-
-
-
     return <>
         Hello, counter: {counter} fake: {fake}
         <button onClick={() => {setCounter(counter + 1)}}>counter+</button>
         <button onClick={() => {setFake(fake + 1)}}>fake+</button>
+    </>
+}
+
+export const ResetEffectExample = () => {
+    console.log('ResetEffectExample rendered')
+    const [counter, setCounder] = useState(1)
+
+    useEffect(()=>{
+        console.log('effect occured: ' + counter)
+
+        //перед замуском нового эффекта или умирании компоненты
+        return () => {
+            console.log('reset effect')
+        }
+    },[counter])
+
+    const increase = () => {setCounder(counter+1)}
+
+    return <>
+        Hello, counter: {counter} <button onClick={increase}>x</button>
     </>
 }
